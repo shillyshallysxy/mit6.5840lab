@@ -21,9 +21,32 @@ type ExampleArgs struct {
 type ExampleReply struct {
 	Y int
 }
+type CompleteTaskArgs struct {
+	TaskName  TaskName
+	TaskFiles []string
+	TaskID    string
+	DestFiles [][]string
+}
+
+type AcquireTaskArgs struct {
+}
+
+type TaskName string
+
+var (
+	TaskNameMap    TaskName = "Map"
+	TaskNameReduce TaskName = "Reduce"
+)
+
+type AcquireTaskReply struct {
+	TaskName  TaskName
+	TaskFiles []string
+	TaskID    string
+
+	NReduce int
+}
 
 // Add your RPC definitions here.
-
 
 // Cook up a unique-ish UNIX-domain socket name
 // in /var/tmp, for the coordinator.
